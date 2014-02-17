@@ -1,0 +1,64 @@
+<% provide(:title, '注册') %>
+<div id="signup-box" class="signup-box visible widget-box no-border">
+	<div class="widget-body">
+		<div class="widget-main">
+			<h4 class="header green lighter bigger">
+				<i class="icon-group blue"></i>
+				新用户注册
+			</h4>
+			<div class="space-6"></div>
+			<%= form_for(@user) do |f| %>
+				<%= render 'shared/error_messages', object: f.object %>
+				<fieldset>
+					<label>
+						<span class="block input-icon input-icon-right">
+							<%= f.text_field :email, placeholder: "E-mail", class: "span12" %>
+							<i class="icon-envelope"></i>
+						</span>
+					</label>
+
+					<label>
+						<span class="block input-icon input-icon-right">
+							<%= f.text_field :name, placeholder: "姓名", class: "span12" %>
+							<i class="icon-user"></i>
+						</span>
+					</label>
+
+					<label>
+						<span class="block input-icon input-icon-right">
+							<%= f.password_field :password, placeholder: "密码", class: "span12" %>
+							<i class="icon-lock"></i>
+						</span>
+					</label>
+
+					<label>
+						<span class="block input-icon input-icon-right">
+							<%= f.password_field :password_confirmation, placeholder: "确认密码", class: "span12" %>
+							<i class="icon-retweet"></i>
+						</span>
+					</label>
+					<div class="space-24"></div>
+					<div class="clearfix">
+						<button type="reset" class="width-30 pull-left btn btn-small">
+							<i class="icon-refresh"></i>
+							清空
+						</button>
+
+						<%=	button_tag class: 'width-65 pull-right btn btn-small btn-success' do %>
+							<i class="icon-arrow-right icon-on-right"></i>
+							注册
+						<% end %>
+					</div>
+				</fieldset>
+			<% end %>
+		</div><!--/widget-main-->
+		<div class="toolbar center">
+			<%= link_to signin_path, class: 'back-to-login-link' do %>
+				<i class="icon-arrow-left"></i>
+				返回登录
+			<% end %>
+		</div>
+	</div><!--/widget-body-->
+</div><!--/signup-box-->
+
+

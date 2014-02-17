@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+	<div id="error_explanation">
+		<div class="alert alert-error">
+			您的提交出现了<%= object.errors.count %>个错误导致无法提交成功
+		</div>
+		<ul>
+			<% object.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

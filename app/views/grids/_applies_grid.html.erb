@@ -1,0 +1,75 @@
+<%= define_grid(@applies_grid, hide_csv_button: true) do |g|
+	g.blank_slate  do
+		"没有数据"
+	end
+	
+	g.column name: '使用机构',
+					attribute: 'branch_name',
+					detach_with_id: :branch_name_filter,
+					model: 'Branch',
+					custom_filter: Branch.all.collect {|b| [b.branch_name, b.branch_name]} do |device_apply|
+		device_apply.branch.branch_name if device_apply.branch
+	end
+
+	g.column name: '提供日期', attribute: 'provider_date', detach_with_id: :provider_date_filter do |device_apply|
+		device_apply.provider_date
+	end
+	
+	g.column name: '运营商', attribute: 'operators' , detach_with_id: :operators_filter, custom_filter: ['电信', '联通'] do |device_apply|
+		device_apply.operators
+	end
+	
+	g.column name: '型号' do |device_apply|
+		device_apply.model
+	end
+	
+	g.column name: '设备数' do |device_apply|
+		device_apply.device_num
+	end
+	
+	g.column name: 'SIM卡数' do |device_apply|
+		device_apply.sim_num
+	end
+	
+	g.column name: '采购方式' do |device_apply|
+		device_apply.procurement_method
+	end
+	
+	g.column name: '采购用途' do |device_apply|
+		device_apply.apply_reason
+	end
+	
+	g.column name: '联系人' do |device_apply|
+		device_apply.contacts
+	end
+	
+	g.column name: '联系电话' do |device_apply|
+		device_apply.contact_phone
+	end
+	
+	g.column name: '状态', attribute: 'status' , detach_with_id: :status_filter, custom_filter: ['在用', '归还', '挂失'] do |device_apply|
+		device_apply.status
+	end
+	
+	g.column name: '录入人', attribute: 'name', filter: false, model: 'User' do |device_apply|
+		device_apply.user.name if device_apply.user
+	end
+	
+	g.column name: '录入时间' do |device_apply|
+		device_apply.created_at.strftime("%Y-%m-%d %H:%M:%S")
+	end
+	
+	g.column do |device_apply|
+		link_to device_apply_path(device_apply.id), method: :get, :'data-rel'=>'tooltip', class: 'btn btn-mini btn-success tooltip-success', title: '查看详情' do
+			sanitize "<i class='icon-search'></i>"
+		end
+	end
+	
+	g.column do |device_apply|
+		link_to new_replacement_path(@replacement, apply_id: device_apply.id), :'data-rel'=>'tooltip', method: :get, class: 'btn btn-mini btn-warning tooltip-warning', title: '归还' do
+			sanitize "<i class='icon-signin'></i>"
+		end
+	end
+	
+	
+end -%>

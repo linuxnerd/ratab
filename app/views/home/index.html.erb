@@ -1,0 +1,76 @@
+<% provide(:title, '首页') %>
+<div class="page-header position-relative">
+	<h1>
+		概览
+		<small>
+			<i class="icon-double-angle-right"></i>
+				系统统计数据和各分公司费用明细
+		</small>
+	</h1>
+</div><!--/.page-header-->
+
+<div class="row-fluid">
+	<div class="span12">
+		<!--PAGE CONTENT BEGINS-->
+		<div class="row-fluid">
+			<div class="infobox-container">
+				<div class="infobox infobox-green  ">
+					<div class="infobox-icon">
+						<i class="icon-user"></i>
+					</div>
+
+					<div class="infobox-data">
+						<span class="infobox-data-number"><%= @user_count %></span>
+						<div class="infobox-content">当前用户总数</div>
+					</div>
+				</div>
+
+				<div class="infobox infobox-blue  ">
+					<div class="infobox-icon">
+						<i class="icon-tablet"></i>
+					</div>
+
+					<div class="infobox-data">
+						<span class="infobox-data-number"><%= @device_count %></span>
+						<div class="infobox-content">当前设备总数</div>
+					</div>
+				</div>
+
+				<div class="infobox infobox-orange2  ">
+					<div class="infobox-icon">
+						<i class="icon-phone-sign"></i>
+					</div>
+
+					<div class="infobox-data">
+						<span class="infobox-data-number"><%= @sim_count %></span>
+						<div class="infobox-content">当前SIM卡总数</div>
+					</div>
+				</div>
+
+				<div class="infobox infobox-pink  ">
+					<div class="infobox-icon">
+						<i class="icon-shopping-cart"></i>
+					</div>
+
+					<div class="infobox-data">
+						<span class="infobox-data-number"><%= @apply_count %></span>
+						<div class="infobox-content">采购记录条数</div>
+					</div>
+				</div>
+
+				<div class="infobox infobox-red  ">
+					<div class="infobox-icon">
+						<i class="icon-yen"></i>
+					</div>
+
+					<div class="infobox-data">
+						<span class="infobox-data-number"><%= DeviceApply.cost %></span>
+						<div class="infobox-content">当月总费用</div>
+					</div>
+				</div>
+
+			</div>
+		</div><!--/row-->
+		<!--PAGE CONTENT ENDS-->
+	</div><!--/.span-->
+</div><!--/.row-fluid-->

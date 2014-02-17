@@ -1,0 +1,117 @@
+<div class="sidebar" id="sidebar">
+	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+		<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+			<button class="btn btn-small btn-success">
+				<i class="icon-signal"></i>
+			</button>
+
+			<button class="btn btn-small btn-info">
+				<i class="icon-pencil"></i>
+			</button>
+
+			<button class="btn btn-small btn-warning">
+				<i class="icon-group"></i>
+			</button>
+
+			<button class="btn btn-small btn-danger">
+				<i class="icon-cogs"></i>
+			</button>
+		</div>
+
+		<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+			<span class="btn btn-success"></span>
+			<span class="btn btn-info"></span>
+			<span class="btn btn-warning"></span>
+			<span class="btn btn-danger"></span>
+		</div>
+	</div><!--#sidebar-shortcuts-->
+
+	<ul class="nav nav-list">
+		<li class="<%= 'active' if params[:controller]=='home' %>">
+			<%= link_to root_path, method: :get do %>
+				<i class="icon-dashboard"></i>
+				<span class="menu-text">概览</span>
+			<% end %>
+		</li>
+
+		<li class="">
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-group"></i>
+				<span class="menu-text">通讯录</span>
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a data-method='get' href="#">
+						<i class="icon-double-angle-right"></i>
+						浏览通讯录
+					</a>
+				</li>
+				<li>
+					<a data-method='get' href="#">
+						<i class="icon-double-angle-right"></i>
+						分组管理
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li class="<%= 'active open' if params[:controller]=='device_applies' || params[:controller]=='fee' %>">
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-tablet"></i>
+				<span class="menu-text">设备管理</span>
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li class="<%= 'active open' if params[:controller]=='device_applies' && params[:action]=='new' %>">
+					<%= link_to new_device_apply_path, method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						采购登记
+					<% end %>
+				</li>
+				<li class="<%= 'active open' if params[:controller]=='device_applies' && params[:action]=='index' %>">
+					<%= link_to device_applies_path, method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						采购明细查询
+					<% end %>
+				</li>
+				<li class="<%= 'active open' if params[:controller]=='fee' && params[:action]=='index' %>">
+					<%= link_to fee_index_path, method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						当月费用查询
+					<% end %>
+				</li>
+			</ul>
+		</li>
+		<li class="<%= 'active open' if params[:controller]=='users' || params[:controller]=='device_fee_config' %>">
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-cogs"></i>
+				<span class="menu-text">系统设置</span>
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='edit' %>">
+					<%= link_to edit_user_path(current_user), method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						个人资料
+					<% end %>
+				</li>
+				<li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='index' %>">
+					<%= link_to users_path, method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						用户管理
+					<% end %>
+				</li>
+				<li class="<%= 'active open' if params[:controller]=='device_fee_config' && params[:action]=='edit' %>">
+					<%= link_to edit_device_fee_config_path(1), method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						设备费用设置
+					<% end %>
+				</li>
+			</ul>
+		</li>
+	</ul><!--/.nav-list-->
+
+	<div class="sidebar-collapse" id="sidebar-collapse">
+		<i class="icon-double-angle-left"></i>
+	</div>
+</div>
