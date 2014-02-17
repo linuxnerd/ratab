@@ -11,63 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213020836) do
-
-  create_table "branches", force: true do |t|
-    t.string   "branch_number"
-    t.string   "branch_name"
-    t.string   "branch_address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "device_applies", force: true do |t|
-    t.string   "provider"
-    t.date     "provider_date"
-    t.string   "brand"
-    t.string   "model"
-    t.string   "operators"
-    t.string   "procurement_method"
-    t.integer  "device_num"
-    t.string   "imei"
-    t.integer  "sim_num"
-    t.string   "sim_sn"
-    t.string   "apply_reason"
-    t.integer  "branch_id"
-    t.string   "contacts"
-    t.string   "contact_phone"
-    t.string   "remarks"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  add_index "device_applies", ["user_id"], name: "index_device_applies_on_user_id"
-
-  create_table "device_fee_configs", force: true do |t|
-    t.string   "settlement_date"
-    t.string   "unicom_device_price"
-    t.string   "unicom_data_price"
-    t.string   "telecom_device_price"
-    t.string   "telecom_data_price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "replacements", force: true do |t|
-    t.date     "replacement_date"
-    t.string   "reason"
-    t.integer  "device_num"
-    t.string   "imei"
-    t.integer  "sim_num"
-    t.string   "sim_sn"
-    t.integer  "device_apply_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "replacements", ["device_apply_id"], name: "index_replacements_on_device_apply_id"
+ActiveRecord::Schema.define(version: 20140112052819) do
 
   create_table "users", force: true do |t|
     t.string   "name"

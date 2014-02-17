@@ -1,8 +1,6 @@
 Ratab::Application.routes.draw do
-	resources :users, :device_fee_config, :device_applies
-	resources :replacements, only: [:new, :create]
+	resources :users
 	resources :sessions, only: [:new, :create, :destory]
-  resources :fee, only: [:index]
 	match '/signup',    to: 'users#new',              via: 'get'
 	match '/signin',    to: 'sessions#new',           via: 'get'
 	match '/signout',   to: 'sessions#destroy',       via: 'delete'
