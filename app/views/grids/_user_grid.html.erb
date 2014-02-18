@@ -39,9 +39,15 @@
 		user.last_ip
 	end
 	
+	
 	g.column name: '操作' do |user|
-		link_to '#', {:'data-rel'=>'tooltip', class: 'btn btn-mini btn-danger tooltip-error', title: '删除用户', data: { confirm: "确定要这么做吗?" }} do
-			sanitize "<i class='icon-trash'></i>"
+		if current_user.admin? && !current_user?(user)
+			link_to user, method: :delete, :'data-rel'=>'tooltip',
+											class: 'btn btn-mini btn-danger tooltip-error',
+											title: '删除用户',
+											data: { confirm: "确定要这么做吗?" } do
+				sanitize "<i class='icon-trash'></i>"
+			end
 		end
 	end
 	

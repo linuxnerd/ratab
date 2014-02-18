@@ -5,7 +5,7 @@
 		<small>
 			<i class="icon-double-angle-right"></i>
 			您可以在这里浏览所有用户
-			<% if current_user.role == 'admin' %>
+			<% if current_user.admin? %>
 				由于您是管理，还可以维护其他用户的信息
 			<% end %>
 		</small>
