@@ -12,11 +12,7 @@ class User < ActiveRecord::Base
 		uniqueness: { case_sensitive: false }
 	validates :phone, format: { with: /\A\+?[\d]*-?[\d]+\z/, message: ' 电话只能输入数字'}
 	
-	validates :password, on: :create,
-				length: { minimum: 6,
-							maximum: 16,
-							too_short: '密码小于6位，太短了',
-							too_long: '密码大于16位，太长了'}
+	validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间', on: :create
 	
 	# 修改密码
 	attr_reader :current_password
@@ -24,6 +20,7 @@ class User < ActiveRecord::Base
 		current_password = user_params.delete(:current_password)
 		
 		if self.authenticate(current_password)
+		validates_of_update_password
 			self.update(user_params)
 		else
 			self.errors.add(:current_password, current_password.blank? ? '旧密码不能为空' : '旧密码输入不正确')
@@ -31,10 +28,8 @@ class User < ActiveRecord::Base
 		end
 	end
 	
-	before_validation :validates_of_update_password
 	def validates_of_update_password
 		validates_presence_of :password, message: '新密码不能为空'
-		validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间'
 	end
 	
 	# rails自带
