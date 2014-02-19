@@ -12,9 +12,7 @@ class User < ActiveRecord::Base
 		uniqueness: { case_sensitive: false }
 	validates :phone, format: { with: /\A\+?[\d]*-?[\d]*\z/, message: ' 电话只能输入数字'}
 
-	validates_presence_of :password_confirmation, :within=>6..16, message:'新密码长度不正确，应该在6到16位之间', if: lambda { |m| m.password.present? }
-	#validates_confirmation_of :password
-	#validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间', on: :create
+	validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间', on: :create
 	
 	# rails自带
 	has_secure_password
@@ -24,14 +22,26 @@ class User < ActiveRecord::Base
 	def update_password(user_params)
 		current_password = user_params.delete(:current_password)
 		
-		p "@@@@@@@@@@#{self.password.present?}"
-
-		if self.authenticate(current_password)
-			self.update(user_params)
-		else
+		# 旧密码判断
+		unless self.authenticate(current_password)
 			self.errors.add(:current_password, current_password.blank? ? '旧密码不能为空' : '旧密码输入不正确')
-			false
+			return false
 		end
+
+		# 新密码空值判断
+		unless user_params[:password].present?
+			self.errors.add(:password, '请输入新密码')
+			return false
+		end
+
+		# 新密码长度判断
+		unless user_params[:password].length.between?(6,16)
+			self.errors.add(:password, '新密码长度不正确，应该在6到16位之间')
+			return false
+		end
+
+
+		self.update(user_params)
 	end
 	
 	def validates_of_update_password
