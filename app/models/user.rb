@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 	
 	before_validation :validates_of_update_password
 	def validates_of_update_password
-		validates_presence_of		:password, message: '新密码不能为空'
+		validates_presence_of :password, message: '新密码不能为空'
 		validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间'
 	end
 	
