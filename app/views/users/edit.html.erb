@@ -4,7 +4,7 @@
 		个人资料
 		<small>
 			<i class="icon-double-angle-right"></i>
-			您可以在这里修改个人信息，包括登录密码。
+			您可以在这里修改个人信息。
 		</small>
 
 	</h1>
@@ -32,7 +32,7 @@
 				</div>
 	
 				<div class="span9">
-					<%= simple_form_for @user do |f| %>
+					<%= simple_form_for @user, :html => {class: 'form-horizontal'} do |f| %>
 						<fieldset>
 							<legend>
 								<h4 class="blue">
@@ -43,11 +43,27 @@
 									</span>
 								</h4>
 							</legend>
-							<%= f.input :email, disabled: true, label: 'E-mail' %>
-							<%= f.input :name, label: '用户名' %>
-							<%= f.input :phone, label: '联系电话', input_html: {onkeyup: 'this.value=this.value.replace(/\D/g,\'\')', onafterpaste: 'this.value=this.value.replace(/\D/g,\'\')'} %>
-							<%= f.input :password, label: '密码' %>
-							<%= f.input :password_confirmation, hint: false, label: '密码确认' %>
+							<%= f.input :email, label: 'E-mail' do %>
+								<span class="input-icon input-icon-right">
+									<%= f.text_field :email, disabled: true %>
+									<i class="icon-envelope"></i>
+								</span>
+							<% end %>
+							<%= f.input :name, label: '姓名' do %>
+								<span class="input-icon input-icon-right">
+									<%= f.text_field :name %>
+									<i class="icon-user"></i>
+								</span>
+							<% end %>
+							<%= f.input :phone, label: '联系电话' do %>
+								<span class="input-icon input-icon-right">
+									<%= f.text_field :phone,
+													onkeyup: 'this.value=this.value.replace(/\D/g,\'\')',
+													onafterpaste: 'this.value=this.value.replace(/\D/g,\'\')' %>
+									<i class="icon-phone"></i>
+								</span>
+							<% end %>
+							
 							<div class="form-actions" >
 								<%= button_tag class: 'btn btn-primary' do %>
 									<i class='icon-save'></i>
@@ -63,8 +79,4 @@
 		<!--PAGE CONTENT ENDS-->
 	</div><!--/.span-->
 </div><!--/.row-fluid-->
-
-<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-	<i class="icon-double-angle-up icon-only bigger-110"></i>
-</a>
 

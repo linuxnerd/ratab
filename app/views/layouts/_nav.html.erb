@@ -62,16 +62,22 @@
 				<b class="arrow icon-angle-down"></b>
 			</a>
 			<ul class="submenu">
+				<li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='index' %>">
+					<%= link_to users_path, method: :get do %>
+						<i class="icon-double-angle-right"></i>
+						用户管理
+					<% end %>
+				</li>
 				<li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='edit' %>">
 					<%= link_to edit_user_path(current_user), method: :get do %>
 						<i class="icon-double-angle-right"></i>
 						个人资料
 					<% end %>
 				</li>
-				<li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='index' %>">
-					<%= link_to users_path, method: :get do %>
+				<li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='password' %>">
+					<%= link_to password_user_path(current_user), method: :get do %>
 						<i class="icon-double-angle-right"></i>
-						用户管理
+						修改密码
 					<% end %>
 				</li>
 			</ul>

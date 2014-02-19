@@ -67,11 +67,29 @@ class UsersController < ApplicationController
 		flash[:success] = "#{@user.name} 被成功删除!"
 		redirect_to users_url
 	end
+	
+	def password
+		drop_breadcrumb "系统设置"
+		drop_breadcrumb "修改密码", 'password'
+		@user = User.find(params[:id])
+	end
+
+	def change_password
+		@user = User.find(params[:id])
+		if @user.update_password(user_params)
+			#sign_in @user
+			redirect_to root_path, :flash => { :notice=>"密码修改成功" }
+		else
+			drop_breadcrumb "系统设置"
+			drop_breadcrumb "修改密码", 'password'
+			render 'password'
+		end
+	end
 
 	private
 		def user_params
 			params.require(:user).permit(:name, :email, :phone,
-											:password, :password_confirmation)
+											:password, :password_confirmation, :current_password)
 		end
 
 		def correct_user

@@ -237,6 +237,12 @@
 								个人资料
 							<% end %>
 						</li>
+						<li>
+							<%= link_to password_user_path(current_user), method: :get do %>
+								<i class="icon-cog"></i>
+								修改密码
+							<% end %>
+						</li>
 
 						<li class="divider"></li>
 
