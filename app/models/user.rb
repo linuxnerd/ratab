@@ -20,8 +20,11 @@ class User < ActiveRecord::Base
 		current_password = user_params.delete(:current_password)
 		
 		if self.authenticate(current_password)
-		validates_of_update_password
-			self.update(user_params)
+			if validates_of_update_password
+				self.update(user_params)
+			else
+				false
+			end
 		else
 			self.errors.add(:current_password, current_password.blank? ? '旧密码不能为空' : '旧密码输入不正确')
 			false
@@ -29,7 +32,12 @@ class User < ActiveRecord::Base
 	end
 	
 	def validates_of_update_password
-		validates_presence_of :password, message: '新密码不能为空'
+		if self.password.nil? || self.password.blank?
+			self.errors.add(:password, '新密码不能为空')
+			false
+		else
+			true
+		end
 	end
 	
 	# rails自带
