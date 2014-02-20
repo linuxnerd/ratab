@@ -44,16 +44,6 @@ class User < ActiveRecord::Base
 		self.update(user_params)
 	end
 	
-	def validates_of_update_password
-		if self.password.nil? || self.password.blank?
-			self.errors.add(:password, '新密码不能为空')
-			false
-		else
-			true
-		end
-	end
-	
-	
 	
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
