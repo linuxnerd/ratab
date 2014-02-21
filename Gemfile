@@ -21,8 +21,8 @@ gem 'ruby-ole', '1.2.11.7'
 gem "wice_grid", '3.4.0'
 
 #样式
-gem 'jquery-ui-rails'
-gem 'jquery-modal-rails'
+#gem 'jquery-ui-rails'
+#gem 'jquery-modal-rails'
 #gem 'bootstrap-sass','2.3.2.0'
 gem 'bootstrap_helper', github: 'sunday35034/bootstrap-helper'
 #gem 'font-awesome-sass'

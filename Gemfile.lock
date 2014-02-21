@@ -89,16 +89,9 @@ GEM
     i18n (0.6.9)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
-    jquery-modal-rails (0.0.4)
-      jquery-ui-rails
-      railties (>= 3.2.0, < 5.0)
-      thor (~> 0.14)
-      uuidtools
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.1.1)
-      railties (>= 3.1.0)
     json (1.8.1)
     json_pure (1.8.1)
     kaminari (0.15.1)
@@ -194,7 +187,6 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    uuidtools (2.1.4)
     wice_grid (3.4.0)
       kaminari (>= 0.13.0)
     will_paginate (3.0.4)
@@ -214,9 +206,7 @@ DEPENDENCIES
   database_cleaner!
   factory_girl_rails (= 4.2.1)
   jbuilder (= 1.0.2)
-  jquery-modal-rails
   jquery-rails (= 2.2.1)
-  jquery-ui-rails
   pg (= 0.15.1)
   rails (= 4.0.1)
   rails_12factor (= 0.0.2)
