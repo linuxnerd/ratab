@@ -1,18 +1,18 @@
 Ratab::Application.routes.draw do
-	resources :users do
-		member do
-			get :password
-			patch :change_password
-		end
-	end
-	
-	resources :sessions, only: [:new, :create, :destory]
-	match '/signup',    to: 'users#new',              via: 'get'
-	match '/signin',    to: 'sessions#new',           via: 'get'
-	match '/signout',   to: 'sessions#destroy',       via: 'delete'
-	match '/index',     to: 'home#index',             via: 'get'
-	root to: 'home#index'
-	#match '/about',     to: 'static_pages#about',     via: 'get'
+  resources :users do
+    member do
+      get :password
+      patch :change_password
+    end
+  end
+  
+  resources :sessions, only: [:new, :create, :destory]
+  match '/signup',    to: 'users#new',              via: 'get'
+  match '/signin',    to: 'sessions#new',           via: 'get'
+  match '/signout',   to: 'sessions#destroy',       via: 'delete'
+  match '/index',     to: 'home#index',             via: 'get'
+  root to: 'home#index'
+  #match '/about',     to: 'static_pages#about',     via: 'get'
     #match '/help',      to: 'static_pages#help',      via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
