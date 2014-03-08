@@ -3,7 +3,7 @@ class UsersController < ApplicationController
           only: [:index, :edit, :update, :show]
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :admin_user, only: :destroy
-  layout 'signin', only: :new
+  layout 'signin', only: [:new, :forgot_password, :password_reset]
 
   def index
     drop_breadcrumb "系统设置"
@@ -84,6 +84,19 @@ class UsersController < ApplicationController
       drop_breadcrumb "修改密码", 'password'
       render 'password'
     end
+  end
+
+  def forgot_password
+    @user = User.new
+  end
+
+  def send_password_reset_instructions
+  end
+
+  def password_reset
+  end
+
+  def new_password
   end
 
   private

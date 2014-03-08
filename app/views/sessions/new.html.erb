@@ -1,58 +1,58 @@
 <% provide(:title, '登录') %>
 <div id="login-box" class="login-box visible widget-box no-bord">
-	<div class="widget-body">
-		<div class="widget-main">
-			<h4 class="header blue lighter bigger">
-				<i class="icon-coffee green"></i>
-				请登录
-			</h4>
-			<div class="space-6"></div>
-			<%= form_for(:session, url: sessions_path) do |f| %>
-				<% flash.each do |key,value| %>
-					<div class="alert alert-<%= key %>"><%= value %></div>
-				<% end %>
-				<fieldset>
-					<label>
-						<span class="block input-icon input-icon-right">
-							<%= f.text_field :email, placeholder: "电子邮件地址", class: "span12" %>
-							<i class="icon-user"></i>
-						</span>
-					</label>
+  <div class="widget-body">
+    <div class="widget-main">
+      <h4 class="header blue lighter bigger">
+        <i class="icon-coffee green"></i>
+        请登录
+      </h4>
+      <div class="space-6"></div>
+      <%= form_for(:session, url: sessions_path) do |f| %>
+        <% flash.each do |key,value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <fieldset>
+          <label>
+            <span class="block input-icon input-icon-right">
+              <%= f.text_field :email, placeholder: "电子邮件地址", class: "span12" %>
+              <i class="icon-user"></i>
+            </span>
+          </label>
 
-					<label>
-						<span class="block input-icon input-icon-right">
-							<%= f.password_field :password, placeholder: "密码", class: "span12" %>
-							<i class="icon-lock"></i>
-						</span>
-					</label>
+          <label>
+            <span class="block input-icon input-icon-right">
+              <%= f.password_field :password, placeholder: "密码", class: "span12" %>
+              <i class="icon-lock"></i>
+            </span>
+          </label>
 
-					<div class="space"></div>
-					<div class="clearfix">
-						<%=	button_tag class: 'width-35 pull-right btn btn-small btn-primary' do %>
-							<i class="icon-key"></i>
-							登录
-						<% end %>
-					</div>
+          <div class="space"></div>
+          <div class="clearfix">
+            <%= button_tag class: 'width-35 pull-right btn btn-small btn-primary' do %>
+              <i class="icon-key"></i>
+              登录
+            <% end %>
+          </div>
 
-					<div class="space-4"></div>
-				</fieldset>
-			<% end %>
-		</div><!--/widget-main-->
-		<div class="toolbar clearfix">
-			<div>
-				<a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
-					<i class="icon-arrow-left"></i>
-					忘记密码?
-				</a>
-			</div>
+          <div class="space-4"></div>
+        </fieldset>
+      <% end %>
+    </div><!--/widget-main-->
+    <div class="toolbar clearfix">
+      <div>
+        <%= link_to forgot_password_users_path, class: 'forgot-password-link' do %>
+          <i class="icon-arrow-left"></i>
+          忘记密码?
+        <% end %>
+      </div>
 
-			<div>
-				<%= link_to signup_path, class: 'user-signup-link' do %>
-					注册
-					<i class="icon-arrow-right"></i>
-				<% end %>
-			</div>
-		</div>
-	</div><!--/widget-body-->
+      <div>
+        <%= link_to signup_path, class: 'user-signup-link' do %>
+          注册
+          <i class="icon-arrow-right"></i>
+        <% end %>
+      </div>
+    </div>
+  </div><!--/widget-body-->
 </div><!--/login-box-->
 

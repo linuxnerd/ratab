@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213020836) do
+ActiveRecord::Schema.define(version: 20140308142449) do
 
   create_table "branches", force: true do |t|
     t.string   "branch_number"
@@ -73,12 +73,14 @@ ActiveRecord::Schema.define(version: 20140213020836) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "role",            default: "user"
+    t.string   "role",                   default: "user"
     t.string   "phone"
     t.string   "last_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.string   "password_reset_token"
+    t.datetime "password_expires_after"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

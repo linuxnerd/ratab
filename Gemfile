@@ -20,6 +20,9 @@ gem 'ruby-ole', '1.2.11.7'
 #表格
 gem "wice_grid", '3.4.0'
 
+# 配置
+gem 'settingslogic', '2.0.9'
+
 #样式
 #gem 'jquery-ui-rails'
 #gem 'jquery-modal-rails'
