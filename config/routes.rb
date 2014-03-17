@@ -4,6 +4,14 @@ Ratab::Application.routes.draw do
       get :password
       patch :change_password
     end
+
+    collection do
+      get :forgot_password
+      put :send_password_reset_instructions
+
+      get :password_reset
+      put :new_password
+    end
   end
   
   resources :sessions, only: [:new, :create, :destory]

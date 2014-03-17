@@ -1,0 +1,11 @@
+defaults: &defaults
+
+development:
+  <<: *defaults
+  BASE_URL: 'http://localhost:3000'
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
