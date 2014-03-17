@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   
-  has_many :device_applies
   
   validates_presence_of :name, message: '用户名不能为空'
   validates_presence_of :email, message: '邮箱不能为空'
