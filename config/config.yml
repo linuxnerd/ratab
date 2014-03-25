@@ -2,7 +2,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  BASE_URL: 'http://localhost:3000'
+  BASE_URL: 'http://172.16.27.29:3000'
 
 test:
   <<: *defaults

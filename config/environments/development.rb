@@ -29,11 +29,11 @@ Ratab::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.163.com",
-    :port => 25,
+    :address => "smtp.gmail.com",
+    :port => 587,
     #:domain => '<your domain>',
-    :user_name => 'ratab_production@163.com',
-    :password => 'qwe123',
+    :user_name => 'ratab.noreply@gmail.com',
+    :password => 'blizzard33',
     :authentication => 'plain',
     :enable_starttls_auto => true }
 
