@@ -1,5 +1,4 @@
-class UserMailer < ActionMailer::Base
-  default from: "来自RATAB"
+class UserMailer < BaseMailer
 
   def reset_password_email(user)
     @user = user
