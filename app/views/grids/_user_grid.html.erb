@@ -1,58 +1,58 @@
 <%= define_grid(@users_grid, hide_csv_button: true) do |g|
-	g.blank_slate  do
-		"没有数据"
-	end
+  g.blank_slate  do
+    "没有数据"
+  end
 
-	g.column name: '账号', attribute: 'email', detach_with_id: :email_filter do |user|
-		user.email
-	end
-	g.column name: '用户名', attribute: 'name', detach_with_id: :name_filter do |user|
-		user.name
-	end
-	
-	g.column name: '联系电话', attribute: 'phone', filter: false do |user|
-		user.phone
-	end
-	
-	g.column name: '角色', attribute: 'role', detach_with_id: :role_filter, 
-				custom_filter: {'管理员' => 'admin', '常规用户' => 'user'} do |user|
-		case user.role
-		when 'admin'
-			'管理员'
-		when 'user'
-			'常规用户'
-		end
-	end
-	
-	g.column name: '注册日期', attribute: 'created_at', detach_with_id: :created_at do |user|
-		user.created_at.strftime("%Y-%m-%d")
-	end
-	
-	dayOfWeek = [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ]
-	g.column name: '最后登录时间', attribute: 'updated_at', filter: false do |user|
-		user.updated_at.strftime("%Y年%m月%d日 ") << 
-				dayOfWeek[user.updated_at.strftime("%w").to_i] << 
-				user.updated_at.strftime(" %H:%M %p")
-	end
-	
-	g.column name: '最后登录IP' do |user|
-		user.last_ip
-	end
-	
-	if current_user.admin?	
-		g.column name: '操作' do |user|
-			unless current_user?(user)
-				if current_user.admin? && !current_user?(user)
-					link_to user, method: :delete, :'data-rel'=>'tooltip',
-						class: 'btn btn-mini btn-danger tooltip-error',
-						title: '删除用户',
-						data: { confirm: "确定要这么做吗?" } do
-						sanitize "<i class='icon-trash'></i>"
-					end
-				end
-			end
-		end
-	end
-	
-	
+  g.column name: '账号', attribute: 'email', detach_with_id: :email_filter do |user|
+    user.email
+  end
+  g.column name: '用户名', attribute: 'name', detach_with_id: :name_filter do |user|
+    user.name
+  end
+  
+  g.column name: '联系电话', attribute: 'phone', filter: false do |user|
+    user.phone
+  end
+  
+  g.column name: '角色', attribute: 'role', detach_with_id: :role_filter, 
+        custom_filter: {'管理员' => 'admin', '常规用户' => 'user'} do |user|
+    case user.role
+    when 'admin'
+      '管理员'
+    when 'user'
+      '常规用户'
+    end
+  end
+  
+  g.column name: '注册日期', attribute: 'created_at', detach_with_id: :created_at do |user|
+    user.created_at.strftime("%Y-%m-%d")
+  end
+  
+  dayOfWeek = [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ]
+  g.column name: '最后登录时间', attribute: 'updated_at', filter: false do |user|
+    user.updated_at.strftime("%Y年%m月%d日 ") << 
+        dayOfWeek[user.updated_at.strftime("%w").to_i] << 
+        user.updated_at.strftime(" %H:%M %p")
+  end
+  
+  g.column name: '最后登录IP' do |user|
+    user.last_ip
+  end
+  
+  if current_user.admin?  
+    g.column name: '操作' do |user|
+      unless current_user?(user)
+        if current_user.admin? && !current_user?(user)
+          link_to user, method: :delete, :'data-rel'=>'tooltip',
+            class: 'btn btn-mini btn-danger tooltip-error',
+            title: '删除用户',
+            data: { confirm: "确定要这么做吗?" } do
+            sanitize "<i class='icon-trash'></i>"
+          end
+        end
+      end
+    end
+  end
+  
+  
 end -%>

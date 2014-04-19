@@ -91,12 +91,51 @@ class UsersController < ApplicationController
   end
 
   def send_password_reset_instructions
+    user = User.find_by_email(params[:user][:email])
+    p user
+    if user
+      user.password_reset_token = SecureRandom.urlsafe_base64
+      user.password_expires_after = 24.hours.from_now
+      user.save
+      UserMailer.reset_password_email(user).deliver
+      flash[:notice] = '密码重置邮件已发送，请检查邮箱收件箱'
+      redirect_to root_path
+    else
+      @user = User.new
+      # put the previous value back.
+      @user.email = params[:user][:email]
+      @user.errors[:email] = '不是注册用户'
+      render 'forgot_password', :layout => 'signin'
+    end
   end
 
   def password_reset
+    token = params.first[0]
+    @user = User.find_by_password_reset_token(token)
+
+    if @user.nil?
+      flash[:error] = '您还没有申请重置密码，或者您刚刚已经完成了密码重置'
+      redirect_to root_path
+      return
+    end
+
+    if @user.password_expires_after < DateTime.now
+      clear_password_reset(@user)
+      @user.save
+      flash[:error] = '重置密码请求超过24小时，请重新请求重置密码'
+      redirect_to forgot_password_users
+    end
   end
 
   def new_password
+    @user = User.find_by_email(params[:user][:email])
+
+    if @user.update_attributes(user_params)
+      clear_password_reset(@user)
+      redirect_to root_path, :flash => { :notice=>"密码修改成功，请用新密码登陆" }
+    else
+      render 'password_reset', :layout => 'signin'
+    end
   end
 
   private
@@ -141,4 +180,11 @@ class UsersController < ApplicationController
       book.write xls_report  
       xls_report.string  
     end
+
+    def clear_password_reset(user)
+      user.password_expires_after = nil
+      user.password_reset_token = nil
+      user.save
+    end
+
 end
