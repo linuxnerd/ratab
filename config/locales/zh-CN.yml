@@ -1,0 +1,14 @@
+'zh-CN':
+  activerecord:
+    models:
+      user: '用户'
+    attributes:
+      user:
+        name: '用户名'
+        email: '电子邮件'
+        password: '密码'
+        password_confirmation: '密码确认'
+        role: '角色'
+        phone: '联系电话'
+        last_ip: '最后登录IP'
+        

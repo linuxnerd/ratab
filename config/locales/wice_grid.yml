@@ -455,7 +455,7 @@ de:
     select_all: Alle auswählen
     deselect_all: Auswahl aufheben
 
-zh:
+zh-CN:
   date:
     order:
       - :year
