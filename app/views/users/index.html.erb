@@ -1,12 +1,12 @@
-<% provide(:title, '用户管理') %>
+<% provide(:title, t('menu.users_management')) %>
 <div class="page-header position-relative">
   <h1>
-    用户管理
+    <%= t('menu.users_management') %>
     <small>
       <i class="icon-double-angle-right"></i>
-      您可以在这里浏览所有用户
+      <%= t('users.you_can_browse_users_here') %>
       <% if current_user.admin? %>
-        由于您是管理，还可以维护其他用户的信息
+        <%= t('you_can_edit_others_profile') %>
       <% end %>
     </small>
 
@@ -19,7 +19,7 @@
     <%= render partial: 'grids/user_grid' %>
     <div class='widget-box'>
       <div class="widget-header widget-header-blue widget-header-flat">
-        <h4>查询条件</h4>
+        <h4><%= t('common.query') %></h4>
         <span class="widget-toolbar">
           <a href="#" data-action="collapse">
             <i class="icon-chevron-up"></i>
@@ -31,7 +31,7 @@
         <div class="widget-main">
           <div class='row-fluid'>
             <div class='span2'>
-              账号
+              <%= t('users.email') %>
             </div>
             <div class='span10'>
               <%= grid_filter @users_grid, :email_filter %>
@@ -39,7 +39,7 @@
           </div>
           <div class='row-fluid'>
             <div class='span2'>
-              用户名
+            <%= t('users.name') %>
             </div>
             <div class='span10'>
               <%= grid_filter @users_grid, :name_filter %>
@@ -47,7 +47,7 @@
           </div>
           <div class='row-fluid'>
             <div class='span2'>
-              角色
+              <%= t('users.role') %>
             </div>
             <div class='span3'>
               <%= grid_filter @users_grid, :role_filter %>
@@ -62,15 +62,15 @@
         <div class='external-buttons'>
           <button class='btn btn-primary wg-external-submit-button', data-grid-name='user' >
             <i class='icon-search'></i>
-            查询
+            <%= t('users.search') %>
           </button>
           <button class='btn wg-external-reset-button', data-grid-name='user' >
             <i class='icon-undo'></i>
-            清空
+            <%= t('users.clear') %>
           </button>
           <%= link_to users_path(:format => 'xls'), class: "btn btn-success pull-right" do%>
             <i class='icon-cloud-download'></i>
-            导出Excel
+            <%= t('users.export_to_excel') %>
           <% end %> 
         </div>
       </div>

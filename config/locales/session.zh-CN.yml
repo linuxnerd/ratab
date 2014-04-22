@@ -6,3 +6,4 @@
     login: '登录'
     forget_password: '忘记密码？'
     register: '注册'
+    email_or_password_incorrect: '用户名 / 密码不正确'

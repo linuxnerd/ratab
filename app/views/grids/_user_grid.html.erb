@@ -1,52 +1,60 @@
 <%= define_grid(@users_grid, hide_csv_button: true) do |g|
   g.blank_slate  do
-    "没有数据"
+    t('common.no_data')
   end
 
-  g.column name: '账号', attribute: 'email', detach_with_id: :email_filter do |user|
+  g.column name: t('users.email'), attribute: 'email', detach_with_id: :email_filter do |user|
     user.email
   end
-  g.column name: '用户名', attribute: 'name', detach_with_id: :name_filter do |user|
+  g.column name: t('users.name'), attribute: 'name', detach_with_id: :name_filter do |user|
     user.name
   end
   
-  g.column name: '联系电话', attribute: 'phone', filter: false do |user|
+  g.column name: t('users.phone'), attribute: 'phone', filter: false do |user|
     user.phone
   end
   
-  g.column name: '角色', attribute: 'role', detach_with_id: :role_filter, 
-        custom_filter: {'管理员' => 'admin', '常规用户' => 'user'} do |user|
+  g.column name: t('users.role'), attribute: 'role', detach_with_id: :role_filter, 
+        custom_filter: {t('users.admin') => 'admin', t('users.user') => 'user'} do |user|
     case user.role
     when 'admin'
-      '管理员'
+      t('users.admin')
     when 'user'
-      '常规用户'
+      t('users.user')
     end
   end
   
-  g.column name: '注册日期', attribute: 'created_at', detach_with_id: :created_at do |user|
+  g.column name: t('users.register_date'), attribute: 'created_at', detach_with_id: :created_at do |user|
     user.created_at.strftime("%Y-%m-%d")
   end
   
-  dayOfWeek = [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ]
-  g.column name: '最后登录时间', attribute: 'updated_at', filter: false do |user|
-    user.updated_at.strftime("%Y年%m月%d日 ") << 
+  dayOfWeek = [
+    t('common.monday'),
+    t('common.tuesday'),
+    t('common.wednesday'),
+    t('common.thursday'),
+    t('common.friday'),
+    t('common.saturday'),
+    t('common.sunday')
+  ]
+  g.column name: t('users.last_login_time'), attribute: 'updated_at', filter: false do |user|
+    user.updated_at.strftime("%Y-%m-%d ") << 
         dayOfWeek[user.updated_at.strftime("%w").to_i] << 
         user.updated_at.strftime(" %H:%M %p")
   end
   
-  g.column name: '最后登录IP' do |user|
+  g.column name: t('users.last_login_ip') do |user|
     user.last_ip
   end
   
   if current_user.admin?  
-    g.column name: '操作' do |user|
+    g.column name: t('common.action') do |user|
       unless current_user?(user)
         if current_user.admin? && !current_user?(user)
           link_to user, method: :delete, :'data-rel'=>'tooltip',
             class: 'btn btn-mini btn-danger tooltip-error',
-            title: '删除用户',
-            data: { confirm: "确定要这么做吗?" } do
+            title: t('users.delete_user'),
+            data: { confirm: t('common.are_you_sure') } do
             sanitize "<i class='icon-trash'></i>"
           end
         end

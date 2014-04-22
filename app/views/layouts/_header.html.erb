@@ -223,7 +223,7 @@
           <a data-toggle="dropdown" href="#" class="dropdown-toggle">
             <%= image_tag "avatars/user.jpg", class: 'nav-user-photo', alt: current_user.name %>
             <span class="user-info">
-              <small>欢迎您,</small>
+              <small><%= t('home.welcome') %></small>
               <%= current_user.name %>
             </span>
 
@@ -234,13 +234,13 @@
             <li>
               <%= link_to edit_user_path(current_user), method: :get do %>
                 <i class="icon-user"></i>
-                个人资料
+                <%= t('menu.profile') %>
               <% end %>
             </li>
             <li>
               <%= link_to password_user_path(current_user), method: :get do %>
                 <i class="icon-cog"></i>
-                修改密码
+                <%= t('menu.edit_password') %>
               <% end %>
             </li>
 
@@ -249,7 +249,7 @@
             <li>
               <%= link_to signout_path, method: "delete" do %>
                 <i class='icon-off'></i>
-                退出
+                <%= t('menu.logout') %>
               <% end %>
             </li>
           </ul>

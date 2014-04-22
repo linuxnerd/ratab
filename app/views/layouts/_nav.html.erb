@@ -30,27 +30,27 @@
     <li class="<%= 'active' if params[:controller]=='home' %>">
       <%= link_to root_path, method: :get do %>
         <i class="icon-dashboard"></i>
-        <span class="menu-text">概览</span>
+        <span class="menu-text"><%= t('menu.dashboards') %></span>
       <% end %>
     </li>
 
     <li class="">
       <a href="#" class="dropdown-toggle">
         <i class="icon-group"></i>
-        <span class="menu-text">通讯录</span>
+        <span class="menu-text"><%= t('menu.contacts') %></span>
         <b class="arrow icon-angle-down"></b>
       </a>
       <ul class="submenu">
         <li>
           <a data-method='get' href="#">
             <i class="icon-double-angle-right"></i>
-            浏览通讯录
+            <%= t('menu.browse_contacts') %>
           </a>
         </li>
         <li>
           <a data-method='get' href="#">
             <i class="icon-double-angle-right"></i>
-            分组管理
+            <%= t('menu.group_management') %>
           </a>
         </li>
       </ul>
@@ -58,26 +58,26 @@
     <li class="<%= 'active open' if params[:controller]=='users' %>">
       <a href="#" class="dropdown-toggle">
         <i class="icon-cogs"></i>
-        <span class="menu-text">系统设置</span>
+        <span class="menu-text"><%= t('menu.settings') %></span>
         <b class="arrow icon-angle-down"></b>
       </a>
       <ul class="submenu">
         <li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='index' %>">
           <%= link_to users_path, method: :get do %>
             <i class="icon-double-angle-right"></i>
-            用户管理
+            <%= t('menu.users_management') %>
           <% end %>
         </li>
         <li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='edit' %>">
           <%= link_to edit_user_path(current_user), method: :get do %>
             <i class="icon-double-angle-right"></i>
-            个人资料
+            <%= t('menu.profile') %>
           <% end %>
         </li>
         <li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='password' %>">
           <%= link_to password_user_path(current_user), method: :get do %>
             <i class="icon-double-angle-right"></i>
-            修改密码
+            <%= t('menu.edit_password') %>
           <% end %>
         </li>
       </ul>

@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @page_title = "登录"
+    @page_title = t('session.login')
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
       user.update_attribute(:last_ip, request.remote_ip)
       redirect_back_or index_path
     else
-      flash.now[:error] = '用户名 / 密码不正确'
+      flash.now[:error] = t('session.email_or_password_incorrect')
       render 'new'
     end
   end

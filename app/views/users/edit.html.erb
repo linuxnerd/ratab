@@ -1,10 +1,10 @@
-<% provide(:title, '个人资料') %>
+<% provide(:title, t('menu.profile')) %>
 <div class="page-header position-relative">
   <h1>
-    个人资料
+    <%= t('menu.profile') %>
     <small>
       <i class="icon-double-angle-right"></i>
-      您可以在这里修改个人信息。
+      <%= t('users.you_can_edit_profile_here') %>
     </small>
 
   </h1>
@@ -17,7 +17,7 @@
       <div id="user-profile-2" class="user-profile row-fluid">
         <div class="span3 center">
           <span class="profile-picture">
-            <%= image_tag 'avatars/profile-pic.jpg', id: 'avatar2', class: 'editable', alt: "#{current_user.name}的头像" %>
+            <%= image_tag 'avatars/profile-pic.jpg', id: 'avatar2', class: 'editable', alt: t(:avatar, scope: :users, name: current_user.name) %>
           </span>
           <div class="space space-4"></div>
           <a href="#" class="btn btn-small btn-block btn-success">
@@ -43,19 +43,19 @@
                   </span>
                 </h4>
               </legend>
-              <%= f.input :email, label: 'E-mail' do %>
+              <%= f.input :email do %>
                 <span class="input-icon input-icon-right">
                   <%= f.text_field :email, disabled: true %>
                   <i class="icon-envelope"></i>
                 </span>
               <% end %>
-              <%= f.input :name, label: '姓名' do %>
+              <%= f.input :name do %>
                 <span class="input-icon input-icon-right">
                   <%= f.text_field :name %>
                   <i class="icon-user"></i>
                 </span>
               <% end %>
-              <%= f.input :phone, label: '联系电话' do %>
+              <%= f.input :phone do %>
                 <span class="input-icon input-icon-right">
                   <%= f.text_field :phone,
                           onkeyup: 'this.value=this.value.replace(/\D/g,\'\')',
@@ -67,7 +67,7 @@
               <div class="form-actions" >
                 <%= button_tag class: 'btn btn-primary' do %>
                   <i class='icon-save'></i>
-                  保存修改
+                  <%= t('common.save') %>
                 <% end %>
               </div>
             </fieldset>

@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   layout 'signin', only: [:new, :forgot_password, :password_reset]
 
   def index
-    drop_breadcrumb "系统设置"
-    drop_breadcrumb "用户管理", users_path
+    drop_breadcrumb t('menu.settings')
+    drop_breadcrumb t('menu.users_management'), users_path
     @users_grid = initialize_grid(User, per_page: 20,
                     name: 'user',
                     order: 'users.created_at',
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       @user.update_attribute(:last_ip, request.remote_ip)
-      redirect_to root_path, :flash => { :notice=>"欢迎使用RA-TAB!" }
+      redirect_to root_path, :flash => { :notice=> t('users.welcome_to_ratab') }
     else
       render 'new', :layout => 'signin'
     end
@@ -45,18 +45,18 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    drop_breadcrumb "系统设置"
-    drop_breadcrumb "个人资料", 'edit'
+    drop_breadcrumb t('menu.settings')
+    drop_breadcrumb t('menu.profile'), 'edit'
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       sign_in @user
-      redirect_to edit_user_path(@user), :flash => { :notice=>"资料修改完成" }
+      redirect_to edit_user_path(@user), :flash => { :notice=>t('users.profile_saved') }
     else
-      drop_breadcrumb "系统设置"
-      drop_breadcrumb "个人资料", edit_user_path(@user)
+      drop_breadcrumb t('menu.settings')
+      drop_breadcrumb t('menu.profile'), edit_user_path(@user)
       render 'edit'
     end
   end
@@ -64,13 +64,13 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "#{@user.name} 被成功删除!"
+    flash[:success] = t(:user_deleted, scope: :users, name: @user.name)
     redirect_to users_url
   end
   
   def password
-    drop_breadcrumb "系统设置"
-    drop_breadcrumb "修改密码", 'password'
+    drop_breadcrumb t('menu.settings')
+    drop_breadcrumb t('menu.edit_password'), 'password'
     @user = User.find(params[:id])
   end
 
@@ -78,10 +78,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_password(user_params)
       #sign_in @user
-      redirect_to root_path, :flash => { :notice=>"密码修改成功" }
+      redirect_to root_path, :flash => { :notice=> t('users.password_saved') }
     else
-      drop_breadcrumb "系统设置"
-      drop_breadcrumb "修改密码", 'password'
+      drop_breadcrumb t('menu.settings')
+      drop_breadcrumb t('menu.edit_password'), 'password'
       render 'password'
     end
   end
@@ -98,13 +98,13 @@ class UsersController < ApplicationController
       user.password_expires_after = 24.hours.from_now
       user.save
       UserMailer.reset_password_email(user).deliver
-      flash[:notice] = '密码重置邮件已发送，请检查邮箱收件箱'
+      flash[:notice] = t('users.password_reset_mail_sent')
       redirect_to root_path
     else
       @user = User.new
       # put the previous value back.
       @user.email = params[:user][:email]
-      @user.errors[:email] = '不是注册用户'
+      @user.errors[:email] = t('users.not_a_registered_user')
       render 'forgot_password', :layout => 'signin'
     end
   end
@@ -114,7 +114,7 @@ class UsersController < ApplicationController
     @user = User.find_by_password_reset_token(token)
 
     if @user.nil?
-      flash[:error] = '您还没有申请重置密码，或者您刚刚已经完成了密码重置'
+      flash[:error] = t('users.has_not_applied')
       redirect_to root_path
       return
     end
@@ -122,7 +122,7 @@ class UsersController < ApplicationController
     if @user.password_expires_after < DateTime.now
       clear_password_reset(@user)
       @user.save
-      flash[:error] = '重置密码请求超过24小时，请重新请求重置密码'
+      flash[:error] = t('users.more_than_24_hours')
       redirect_to forgot_password_users
     end
   end
@@ -132,7 +132,7 @@ class UsersController < ApplicationController
 
     if @user.update_attributes(user_params)
       clear_password_reset(@user)
-      redirect_to root_path, :flash => { :notice=>"密码修改成功，请用新密码登陆" }
+      redirect_to root_path, :flash => { :notice=>t('users.password_saved') }
     else
       render 'password_reset', :layout => 'signin'
     end

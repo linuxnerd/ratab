@@ -1,10 +1,10 @@
-<% provide(:title, '注册') %>
+<% provide(:title, t('users.register')) %>
 <div id="signup-box" class="signup-box visible widget-box no-border">
   <div class="widget-body">
     <div class="widget-main">
       <h4 class="header green lighter bigger">
         <i class="icon-group blue"></i>
-        新用户注册
+        <%= t('users.register_user') %>
       </h4>
       <div class="space-6"></div>
       <%= form_for(@user) do |f| %>
@@ -12,28 +12,28 @@
         <fieldset>
           <label>
             <span class="block input-icon input-icon-right">
-              <%= f.text_field :email, placeholder: "E-mail", class: "span12" %>
+              <%= f.text_field :email, placeholder: t('users.email'), class: "span12" %>
               <i class="icon-envelope"></i>
             </span>
           </label>
 
           <label>
             <span class="block input-icon input-icon-right">
-              <%= f.text_field :name, placeholder: "姓名", class: "span12" %>
+              <%= f.text_field :name, placeholder: t('users.name'), class: "span12" %>
               <i class="icon-user"></i>
             </span>
           </label>
 
           <label>
             <span class="block input-icon input-icon-right">
-              <%= f.password_field :password, placeholder: "密码", class: "span12" %>
+              <%= f.password_field :password, placeholder: t('users.password'), class: "span12" %>
               <i class="icon-lock"></i>
             </span>
           </label>
 
           <label>
             <span class="block input-icon input-icon-right">
-              <%= f.password_field :password_confirmation, placeholder: "确认密码", class: "span12" %>
+              <%= f.password_field :password_confirmation, placeholder: t('users.password_confirmation'), class: "span12" %>
               <i class="icon-retweet"></i>
             </span>
           </label>
@@ -41,12 +41,12 @@
           <div class="clearfix">
             <button type="reset" class="width-30 pull-left btn btn-small">
               <i class="icon-refresh"></i>
-              清空
+              <%= t('users.clear') %>
             </button>
 
             <%=  button_tag class: 'width-65 pull-right btn btn-small btn-success' do %>
               <i class="icon-arrow-right icon-on-right"></i>
-              注册
+              <%= t('users.register') %>
             <% end %>
           </div>
         </fieldset>
@@ -55,7 +55,7 @@
     <div class="toolbar center">
       <%= link_to signin_path, class: 'back-to-login-link' do %>
         <i class="icon-arrow-left"></i>
-        返回登录
+        <%= t('users.back_to_login') %>
       <% end %>
     </div>
   </div><!--/widget-body-->

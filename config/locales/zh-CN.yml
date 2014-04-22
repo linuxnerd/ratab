@@ -1,4 +1,18 @@
 'zh-CN':
+  common:
+    query: '查询条件'
+    submit: '提交'
+    save: '保存'
+    no_data: '没有数据'
+    are_you_sure: '确定要这么做吗?'
+    action: '操作'
+    monday: '星期一'
+    tuesday: '星期二'
+    wednesday: '星期三'
+    thursday: '星期四'
+    friday: '星期五'
+    saturday: '星期六'
+    sunday: '星期日'
   activerecord:
     models:
       user: '用户'
@@ -11,4 +25,5 @@
         role: '角色'
         phone: '联系电话'
         last_ip: '最后登录IP'
+        current_password: '当前密码'
         
