@@ -4,7 +4,7 @@ class ClientEvent
       if message['data']
         if message['data']['token'] != Settings.faye_token
           # Setting any 'error' against the message causes Faye to not accept it.
-          message['error'] = "Faye authorize faild."
+          message['error'] = "403::Authentication required"
         else
           message['data'].delete('token')
         end
