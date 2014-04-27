@@ -38,11 +38,14 @@ class User < ActiveRecord::Base
       self.errors.add(:password, '新密码长度不正确，应该在6到16位之间')
       return false
     end
-
-
     self.update(user_params)
   end
   
+  def temp_access_token
+    Rails.cache.fetch("user-#{self.id}-temp_access_token-#{Time.now.strftime("%Y%m%d")}", expires_in: 1.day) do
+      SecureRandom.hex
+    end
+  end
   
   def User.new_remember_token
     SecureRandom.urlsafe_base64

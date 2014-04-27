@@ -1,15 +1,17 @@
 defaults: &defaults
-  app_name: "RATAB"
+  app_name: 'RATAB'
+  faye_server: 'http://192.168.1.99:3000/faye'
+  faye_token: '123456'
 
 development:
   <<: *defaults
   BASE_URL: 'http://172.16.27.29:3000'
-  email_sender: "RATAB测试邮件"
+  email_sender: 'RATAB测试邮件'
 
 test:
   <<: *defaults
-  email_sender: "RATAB测试邮件"
+  email_sender: 'RATAB测试邮件'
 
 production:
   <<: *defaults
-  email_sender: "RATAB自动邮件"
+  email_sender: 'RATAB自动邮件'

@@ -33,5 +33,14 @@
     <script type="text/javascript">
       if("ontouchend" in document) document.write("<script src='/assets/javascripts/jquery.mobile.custom.min.js'>"+"<"+"/script>");
     </script>
+    <script type="text/javascript" data-turbolinks-eval=false>
+      FAYE_SERVER_URL = "<%= Settings.faye_server %>";
+      <% if current_user %>
+        CURRENT_USER_ACCESS_TOKEN = "<%= current_user.temp_access_token %>";
+      <% end %>
+      if (FAYE_SERVER_URL) {
+        App.initNotifySubscribe();
+      }
+    </script>
   </body>
 </html>
