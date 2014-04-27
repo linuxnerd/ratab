@@ -12,7 +12,7 @@ module Ratab
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
 
     # faye server
-    config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25 do
+    config.middleware.use FayeRails::Middleware, mount: '/faye', timeout: 25 do
       map '/notify/**' => NotifyController  
       map default: NotifyController
 
