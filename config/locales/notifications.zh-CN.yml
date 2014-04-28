@@ -1,0 +1,4 @@
+'zh-CN':
+  notification:
+    notification_count: "有%{count}条新通知"
+    see_all_messages: '查看所有通知'

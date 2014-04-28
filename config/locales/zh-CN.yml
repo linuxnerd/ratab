@@ -1,4 +1,9 @@
 'zh-CN':
+  datetime:
+    distance_in_words:
+      less_than_x_minutes: "少于%{count}分钟"
+      x_minutes: "%{count}分钟"
+      about_x_hours: "大约%{count}小时"
   common:
     query: '查询条件'
     submit: '提交'

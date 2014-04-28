@@ -10,7 +10,8 @@ module Ratab
     config.i18n.default_locale = "zh-CN"
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
-
+    I18n.enforce_available_locales = false
+    
     # faye server
     config.middleware.use FayeRails::Middleware, mount: '/faye', timeout: 25 do
       map '/notify/**' => NotifyController  
