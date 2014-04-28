@@ -36,7 +36,7 @@ window.App =
     return if not CURRENT_USER_ACCESS_TOKEN?
     faye = new Faye.Client(FAYE_SERVER_URL)
     notifiy_subscription = faye.subscribe "/notify/#{CURRENT_USER_ACCESS_TOKEN}",(json) ->
-      console.log('receive message:'+json.title+':'+json.content)
+      console.log('receive message:'+json.title+'-'+json.content)
       span = $('#notificatioin_count')
       current_count = span.text()
       span.addClass('badge-important') if $.trim(current_count) == '0'
