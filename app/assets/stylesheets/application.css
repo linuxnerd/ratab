@@ -13,7 +13,7 @@
  *= require bootstrap-responsive.css
  *= require font-awesome.css
  *= require jquery-ui-1.10.3.custom.min.css
- *= require ace.min.css
+ *= require ace.css
  *= require ace-responsive.min.css
  *= require ace-skins.min.css
  *= require_tree .

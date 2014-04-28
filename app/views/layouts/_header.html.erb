@@ -16,7 +16,7 @@
             <i class="icon-bell-alt icon-animated-bell"></i>
             <% count = current_user.notifications.unread.count %>
             <% if count == 0 %>
-              <span id='notificatioin_count' class="badge">
+              <span id='notificatioin_count' class="badge ">
                 <%= count %>
               </span>
             <% else %>
@@ -44,7 +44,7 @@
 
                     <span class="msg-time">
                       <i class="icon-time"></i>
-                      <span><%= time_ago_in_words(message.created_at) %>前</span>
+                      <span><%= time_ago_in_words(message.created_at) %>之前</span>
                     </span>
                   </span>
                 </a>

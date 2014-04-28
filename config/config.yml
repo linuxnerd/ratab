@@ -1,6 +1,6 @@
 defaults: &defaults
   app_name: 'RATAB'
-  faye_server: 'http://172.16.27.29:3000/faye'
+  faye_server: 'http://localhost:3000/faye'
   faye_token: '123456'
 
 development:
