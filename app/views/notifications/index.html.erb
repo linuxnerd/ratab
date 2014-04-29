@@ -1,2 +1,31 @@
-<h1>Notifications#index</h1>
-<p>Find me in app/views/notifications/index.html.erb</p>
+<table id='inbox' class="table table-hover table-bordered table-condensed table-striped">
+  <caption>
+    <div class='row-fluid'>
+      <div class='pull-left'>
+        <button class='btn btn-small btn-danger'><%= t('notification.clear_inbox') %></button>
+      </div>
+      <div class='pull-right'>
+        <h5>
+          <%= t(:x_notifications, scope: :notification, count: current_user.notifications.count) %>
+        </h5>
+      </div>
+  </caption>
+  <tbody>
+    <%=render partial:'notification',collection: @notifications %>
+    <% for message in @notifications do %>
+    <tr>
+      <td>
+        <div class='row-fluid'>
+          <h5 class='blue'>
+            <b><%= message.title %></b>
+            <div class='pull-right'>
+              <button class='btn btn-small btn-danger'><%= t('notification.delete') %></button>
+            </div>
+          </h5>
+        </div>
+        <p><%= message.content %></p>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,6 +1,8 @@
 class Notification < ActiveRecord::Base
   belongs_to :user
 
+  paginates_per 10
+
   scope :unread, -> { where(read: false) }
 
   after_create :push_to_client

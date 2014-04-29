@@ -40,7 +40,7 @@ window.App =
       span = $('#notificatioin_count')
       current_count = span.text()
       span.addClass('badge-important') if $.trim(current_count) == '0'
-      $('#unread-list').append("<li class='unread-list-item'><a href='#'><img src='assets/avatars/avatar4.png' class='msg-photo' alt='Bob's Avatar' /><span class='msg-body'><span class='msg-title'><span class='blue'><b>#{json.title}</b></span><p>#{json.content}</p></span><span class='msg-time'><i class='icon-time'></i><span> 刚刚</span></span></a></li>")
+      $('#unread-list').append("<li class='unread-list-item'><a href='/notifications' data-method='get'><span class='msg-body'><span class='msg-title'><span class='blue'><b>#{json.title}</b></span><p>#{json.content}</p></span><span class='msg-time'><i class='icon-time'></i><span> 刚刚</span></span></a></li>")
       span.text(++current_count)
       $('.nav-header').replaceWith("<li class='nav-header'><i class='icon-bell'></i>有#{current_count}条新通知</li>")
     true

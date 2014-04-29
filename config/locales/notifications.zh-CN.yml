@@ -2,3 +2,7 @@
   notification:
     notification_count: "有%{count}条新通知"
     see_all_messages: '查看所有通知'
+    clear_inbox: '清空收件箱'
+    x_notifications: "通知提醒（%{count}条）"
+    notification_deleted: '通知提醒已成功删除'
+    delete: '删除'

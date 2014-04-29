@@ -34,8 +34,7 @@
 
             <% for message in current_user.notifications.unread do %>
               <li>
-                <a href="#">
-                  <%= image_tag 'avatars/avatar.png', class: "msg-photo", alt: "Alex's Avatar" %>
+                <%= link_to notifications_path, method: :get do %>
                   <span class="msg-body">
                     <span class="msg-title">
                       <span class="blue"><b><%= message.title %></b></span>
@@ -47,7 +46,7 @@
                       <span><%= time_ago_in_words(message.created_at) %>之前</span>
                     </span>
                   </span>
-                </a>
+                <% end %>
               </li>
             <% end %>
           </ul>

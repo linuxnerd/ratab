@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '3.1.2'
 #分页
 #gem 'will_paginate', '3.0.4'
 #gem 'bootstrap-will_paginate', '0.0.9'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
 #form
 gem 'simple_form' ,'3.0.1'

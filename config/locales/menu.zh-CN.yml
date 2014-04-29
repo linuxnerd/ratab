@@ -8,4 +8,5 @@
     users_management: '用户管理'
     profile: '个人资料'
     edit_password: '修改密码'
+    inbox: 收件箱
     logout: '退出'
