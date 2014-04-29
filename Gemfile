@@ -8,7 +8,7 @@ gem 'bcrypt-ruby', '3.1.2'
 #分页
 #gem 'will_paginate', '3.0.4'
 #gem 'bootstrap-will_paginate', '0.0.9'
-gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'kaminari-bootstrap', '~> 0.1.3', github: 'linuxnerd/kaminari-bootstrap'
 
 #form
 gem 'simple_form' ,'3.0.1'
@@ -28,12 +28,12 @@ gem 'settingslogic', '2.0.9'
 #gem 'jquery-ui-rails'
 #gem 'jquery-modal-rails'
 #gem 'bootstrap-sass','2.3.2.0'
-gem 'bootstrap_helper', github: 'sunday35034/bootstrap-helper'
+gem 'bootstrap_helper', github: 'linuxnerd/bootstrap-helper'
 #gem 'font-awesome-sass'
 
 gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.0'
+gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '2.2.1'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'

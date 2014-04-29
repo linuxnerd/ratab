@@ -7,7 +7,13 @@
   common:
     query: '查询条件'
     submit: '提交'
+    submiting: '正在提交...'
     save: '保存'
+    saving: '正在保存...'
+    delete: '删除'
+    deleting: '正在删除...'
+    clear: '清空'
+    clearing: '正在清空...'
     no_data: '没有数据'
     are_you_sure: '确定要这么做吗?'
     action: '操作'
@@ -31,4 +37,3 @@
         phone: '联系电话'
         last_ip: '最后登录IP'
         current_password: '当前密码'
-        

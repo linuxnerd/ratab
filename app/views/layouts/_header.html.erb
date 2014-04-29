@@ -28,8 +28,12 @@
 
           <ul id='unread-list' class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
             <li class="nav-header">
-              <i class="icon-bell"></i>
-              <%= t(:notification_count, scope: :notification, count: current_user.notifications.unread.count) %>
+              <%= link_to notifications_path, method: :get do %>
+                <i class="icon-bell"></i>
+                <%= t(:notification_count,
+                        scope: :notification,
+                        count: current_user.notifications.unread.count) %>
+              <% end %>
             </li>
 
             <% for message in current_user.notifications.unread do %>

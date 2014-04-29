@@ -1,31 +1,52 @@
-<table id='inbox' class="table table-hover table-bordered table-condensed table-striped">
-  <caption>
-    <div class='row-fluid'>
-      <div class='pull-left'>
-        <button class='btn btn-small btn-danger'><%= t('notification.clear_inbox') %></button>
-      </div>
-      <div class='pull-right'>
-        <h5>
-          <%= t(:x_notifications, scope: :notification, count: current_user.notifications.count) %>
-        </h5>
-      </div>
-  </caption>
-  <tbody>
-    <%=render partial:'notification',collection: @notifications %>
-    <% for message in @notifications do %>
-    <tr>
-      <td>
-        <div class='row-fluid'>
-          <h5 class='blue'>
-            <b><%= message.title %></b>
-            <div class='pull-right'>
-              <button class='btn btn-small btn-danger'><%= t('notification.delete') %></button>
+<div class='row-fluid'>
+  <div class='offset1 span10'>
+    <% if @notifications.blank? %>
+      <div class="no_result" style="padding:80px 0;"><%= t('notification.no_notification')%></div>
+    <% else %>
+      <table id='inbox' class="table table-hover table-bordered table-condensed table-striped">
+        <caption>
+          <div class='row-fluid'>
+            <div class='pull-left'>
+              <%= link_to t("common.clear"), clear_notifications_path,
+                  class: 'btn btn-small btn-danger',
+                  method: :post,
+                  'data-disable-with' => t('common.clearing') %>
             </div>
-          </h5>
-        </div>
-        <p><%= message.content %></p>
-      </td>
-    </tr>
+            <div class='pull-right'>
+              <h5>
+                <%= t(:x_notifications, scope: :notification, count: current_user.notifications.count) %>
+              </h5>
+            </div>
+          </div>
+        </caption>
+        <tbody>
+          <% for message in @notifications do %>
+          <tr id="<%= message.anchor %>">
+            <td>
+              <div class='row-fluid'>
+                <h5 class='blue'>
+                  <b><%= message.title %></b>
+                  <small>
+                    <i class="icon-time"></i>
+                    <span><%= time_ago_in_words(message.created_at) %>之前</span>
+                  </small>
+                  <div class='pull-right'>
+                    <%= link_to t('common.delete'), message,
+                      method: :delete, 
+                      class: 'btn btn-small btn-danger',
+                      'data-disable-with' => t('common.deleting') %>
+                  </div>
+                </h5>
+              </div>
+              <p><%= message.content %></p>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
-  </tbody>
-</table>
+    <div class='center'>
+      <%= paginate @notifications %>
+    </div>
+  </div>
+</div>
