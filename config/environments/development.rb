@@ -33,8 +33,9 @@ Ratab::Application.configure do
     :port => 587,
     #:domain => '<your domain>',
     :user_name => 'ratab.noreply@gmail.com',
-    :password => 'blizzard33',
+    :password => '123456',
     :authentication => 'plain',
-    :enable_starttls_auto => true }
+    :enable_starttls_auto => true 
+  }
 
 end

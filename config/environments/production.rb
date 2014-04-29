@@ -77,4 +77,15 @@ Ratab::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # mailer
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    #:domain => '<your domain>',
+    :user_name => 'ratab.noreply@gmail.com',
+    :password => '123456',
+    :authentication => 'plain',
+    :enable_starttls_auto => true 
+  }
 end
