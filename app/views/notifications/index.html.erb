@@ -10,6 +10,7 @@
               <%= link_to t("common.clear"), clear_notifications_path,
                   class: 'btn btn-small btn-danger',
                   method: :post,
+                  data: { confirm: t('common.are_you_sure') },
                   'data-disable-with' => t('common.clearing') %>
             </div>
             <div class='pull-right'>
