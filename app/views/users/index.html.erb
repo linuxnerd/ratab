@@ -60,15 +60,15 @@
     <div class='row-fluid'>
       <div class='span12'>
         <div class='external-buttons'>
-          <button class='btn btn-primary wg-external-submit-button', data-grid-name='user' >
+          <button class='btn btn-small btn-primary wg-external-submit-button', data-grid-name='user' >
             <i class='icon-search'></i>
             <%= t('users.search') %>
           </button>
-          <button class='btn wg-external-reset-button', data-grid-name='user' >
+          <button class='btn btn-small wg-external-reset-button', data-grid-name='user' >
             <i class='icon-undo'></i>
             <%= t('users.clear') %>
           </button>
-          <%= link_to users_path(:format => 'xls'), class: "btn btn-success pull-right" do%>
+          <%= link_to users_path(:format => 'xls'), class: "btn btn-small btn-success pull-right" do%>
             <i class='icon-cloud-download'></i>
             <%= t('users.export_to_excel') %>
           <% end %> 
