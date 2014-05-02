@@ -1,4 +1,5 @@
 #= require jquery
+#= require jquery.turbolinks
 #= require jquery_ujs
 #= require ace-elements.min.js
 #= require bootstrap.js

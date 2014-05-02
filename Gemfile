@@ -28,7 +28,7 @@ gem 'settingslogic', '2.0.9'
 #gem 'jquery-ui-rails'
 #gem 'jquery-modal-rails'
 #gem 'bootstrap-sass','2.3.2.0'
-gem 'bootstrap_helper', github: 'linuxnerd/bootstrap-helper'
+gem 'bootstrap_helper', '4.2.3'
 #gem 'font-awesome-sass'
 
 gem 'sass-rails', '4.0.1'
@@ -36,6 +36,7 @@ gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '2.2.1'
 gem 'turbolinks', '1.1.1'
+gem 'jquery-turbolinks', '2.0.2'
 gem 'jbuilder', '1.0.2'
 
 # faye server
@@ -52,7 +53,6 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.1'
   gem 'cucumber-rails', '1.3.0', :require => false
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 
