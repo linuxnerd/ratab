@@ -36,7 +36,7 @@
               <% end %>
             </li>
 
-            <% for message in current_user.notifications.unread do %>
+            <% current_user.notifications.unread.each do |message| %>
               <li>
                 <%= link_to notifications_path do %>
                   <span class="msg-body">
