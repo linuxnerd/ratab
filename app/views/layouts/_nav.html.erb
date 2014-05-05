@@ -28,7 +28,7 @@
 
   <ul class="nav nav-list">
     <li class="<%= 'active' if params[:controller]=='home' %>">
-      <%= link_to root_path, method: :get do %>
+      <%= link_to root_path do %>
         <i class="icon-dashboard"></i>
         <span class="menu-text"><%= t('menu.dashboards') %></span>
       <% end %>
@@ -63,19 +63,19 @@
       </a>
       <ul class="submenu">
         <li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='index' %>">
-          <%= link_to users_path, method: :get do %>
+          <%= link_to users_path do %>
             <i class="icon-double-angle-right"></i>
             <%= t('menu.users_management') %>
           <% end %>
         </li>
         <li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='edit' %>">
-          <%= link_to edit_user_path(current_user), method: :get do %>
+          <%= link_to edit_user_path(current_user) do %>
             <i class="icon-double-angle-right"></i>
             <%= t('menu.profile') %>
           <% end %>
         </li>
         <li class="<%= 'active open' if params[:controller]=='users' && params[:action]=='password' %>">
-          <%= link_to password_user_path(current_user), method: :get do %>
+          <%= link_to password_user_path(current_user) do %>
             <i class="icon-double-angle-right"></i>
             <%= t('menu.edit_password') %>
           <% end %>

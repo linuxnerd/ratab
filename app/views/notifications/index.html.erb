@@ -21,7 +21,7 @@
           </div>
         </caption>
         <tbody>
-          <% for message in @notifications do %>
+          <% @notifications.each do |message| %>
           <tr id="<%= message.anchor %>">
             <td>
               <div class='row-fluid'>

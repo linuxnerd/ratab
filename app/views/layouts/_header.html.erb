@@ -2,7 +2,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container-fluid">
-      <%= link_to root_path, class: 'brand', method: :get do %>
+      <%= link_to root_path, class: 'brand' do %>
         <small>
           <i class="icon-leaf"></i>
           RA-TAB
@@ -28,7 +28,7 @@
 
           <ul id='unread-list' class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
             <li class="nav-header">
-              <%= link_to notifications_path, method: :get do %>
+              <%= link_to notifications_path do %>
                 <i class="icon-bell"></i>
                 <%= t(:notification_count,
                         scope: :notification,
@@ -36,9 +36,9 @@
               <% end %>
             </li>
 
-            <% for message in current_user.notifications.unread do %>
+            <% current_user.notifications.unread.each do |message| %>
               <li>
-                <%= link_to notifications_path, method: :get do %>
+                <%= link_to notifications_path do %>
                   <span class="msg-body">
                     <span class="msg-title">
                       <span class="blue"><b><%= message.title %></b></span>
@@ -69,13 +69,13 @@
 
           <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
             <li>
-              <%= link_to edit_user_path(current_user), method: :get do %>
+              <%= link_to edit_user_path(current_user) do %>
                 <i class="icon-user"></i>
                 <%= t('menu.profile') %>
               <% end %>
             </li>
             <li>
-              <%= link_to password_user_path(current_user), method: :get do %>
+              <%= link_to password_user_path(current_user) do %>
                 <i class="icon-cog"></i>
                 <%= t('menu.edit_password') %>
               <% end %>
