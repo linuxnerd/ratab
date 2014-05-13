@@ -14,17 +14,17 @@ class UsersController < ApplicationController
                     order_direction: 'desc')
 
     @users = User.all
-    respond_to do |format|  
-      format.xls {   
-        send_data(xls_content_for(@users),  
-        :type => "text/excel;charset=gbk; header=present",  
-        :filename => "Report_Users_#{Time.now.strftime("%Y%m%d")}.xls")  
+    respond_to do |format|
+      format.xls {
+        send_data(xls_content_for(@users),
+        :type => "text/excel;charset=gbk; header=present",
+        :filename => "Report_Users_#{Time.now.strftime("%Y%m%d")}.xls")
       }
       format.html
     end
 
   end
-  
+
   def new
     @user = User.new
   end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     flash[:success] = t(:user_deleted, scope: :users, name: @user.name)
     redirect_to users_url
   end
-  
+
   def password
     drop_breadcrumb t('menu.settings')
     drop_breadcrumb t('menu.edit_password'), 'password'
@@ -92,7 +92,6 @@ class UsersController < ApplicationController
 
   def send_password_reset_instructions
     user = User.find_by_email(params[:user][:email])
-    p user
     if user
       user.password_reset_token = SecureRandom.urlsafe_base64
       user.password_expires_after = 24.hours.from_now
@@ -174,11 +173,11 @@ class UsersController < ApplicationController
         sheet1[count_row,5] = obj.created_at.strftime("%Y-%m-%d")
         sheet1[count_row,6] = obj.last_ip
         sheet1[count_row,7] = obj.updated_at.strftime("%Y-%m-%d %H:%M:%S")
-        count_row += 1  
-      end  
+        count_row += 1
+      end
 
-      book.write xls_report  
-      xls_report.string  
+      book.write xls_report
+      xls_report.string
     end
 
     def clear_password_reset(user)
