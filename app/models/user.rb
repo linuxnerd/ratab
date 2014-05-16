@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  
-  
+
+
   validates_presence_of :name, message: '用户名不能为空'
   validates_presence_of :email, message: '邮箱不能为空'
   validates :name, :length=>{ maximum: 50, too_long: '用户名太长了' }
@@ -13,15 +13,25 @@ class User < ActiveRecord::Base
   validates :phone, format: { with: /\A\+?[\d]*-?[\d]*\z/, message: ' 电话只能输入数字'}
 
   validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间', on: :create
-  
+
   # rails自带
   has_secure_password
+
+  class << self
+    def new_remember_token
+      SecureRandom.urlsafe_base64
+    end
+
+    def encrypt(token)
+      Digest::SHA1.hexdigest(token.to_s)
+    end
+  end
 
   # 修改密码
   attr_reader :current_password
   def update_password(user_params)
     current_password = user_params.delete(:current_password)
-    
+
     # 旧密码判断
     unless self.authenticate(current_password)
       self.errors.add(:current_password, current_password.blank? ? '旧密码不能为空' : '旧密码输入不正确')
@@ -41,19 +51,11 @@ class User < ActiveRecord::Base
     end
     self.update(user_params)
   end
-  
+
   def temp_access_token
     Rails.cache.fetch("user-#{self.id}-temp_access_token-#{Time.now.strftime("%Y%m%d")}", expires_in: 1.day) do
       SecureRandom.hex
     end
-  end
-  
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def User.encrypt(token)
-    Digest::SHA1.hexdigest(token.to_s)
   end
 
   def admin?
