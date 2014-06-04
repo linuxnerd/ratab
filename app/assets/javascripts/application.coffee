@@ -10,6 +10,8 @@
 #= require jquery.mobile.custom.min.js
 #= require wice_grid
 #= require faye
+#= require nprogress
+#= require nprogress-turbolinks
 #= require_tree .
 
 window.setTimeout (->
@@ -34,3 +36,10 @@ window.App =
       span.text(++current_count)
       $('.nav-header').replaceWith("<li class='nav-header'><i class='icon-bell'></i>有#{current_count}条新通知</li>")
     true
+
+# NProgress
+NProgress.configure
+  showSpinner: false
+  speed: 300
+  minimum: 0.03
+  ease: 'ease'

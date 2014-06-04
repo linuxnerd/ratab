@@ -1,6 +1,6 @@
 source 'https://ruby.taobao.org'
 
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.3'
 
 # 加密
 gem 'bcrypt-ruby', '3.1.2'
@@ -24,8 +24,9 @@ gem 'settingslogic', '2.0.9'
 
 # 样式
 gem 'bootstrap_helper', '4.2.3'
+gem 'nprogress-rails', '~> 0.1.3.0'
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '2.2.1'

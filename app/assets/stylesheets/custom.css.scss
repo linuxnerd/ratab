@@ -1,3 +1,7 @@
+$nprogress-color: #990033;
+@import 'nprogress';
+@import 'nprogress-bootstrap';
+
 body, button, input, select, textarea, h1 ,h2, h3, h4, h5, h6 {
 	font-family: Microsoft YaHei, '黑体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }

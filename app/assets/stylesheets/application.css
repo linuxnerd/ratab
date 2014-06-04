@@ -16,5 +16,7 @@
  *= require ace.css
  *= require ace-responsive.min.css
  *= require ace-skins.min.css
+ *= require nprogress
+ *= require nprogress-bootstrap
  *= require_tree .
  */
