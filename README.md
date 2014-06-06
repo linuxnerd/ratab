@@ -11,7 +11,29 @@ cp config.default.yml config.yml # 将参数修改成自己的参数(注意修�
 bundle exec rake db:schema:load
 bundle exec rake db:init # 创建一个管理员用户admin@g.com
 ```
+头像上传功能必须安装[ImageMagick](http://www.imagemagick.org/)，安装方法：
+
+如果是ubuntu
+```
+sudo apt-get install imagemagick
+```
+如果是mac osx，使用`Homebrew`安装
+```
+brew install imagemagick
+```
 注意修改`config/environments`下各环境的邮箱配置
+```ruby
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address => "smtp.gmail.com",
+  :port => 587,
+  #:domain => '<your domain>',
+  :user_name => 'your email',
+  :password => 'your password',
+  :authentication => 'plain',
+  :enable_starttls_auto => true
+}
+```
 
 ##已经实现了什么？
 
