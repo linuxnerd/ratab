@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428030005) do
+ActiveRecord::Schema.define(version: 20140606064641) do
 
   create_table "notifications", force: true do |t|
     t.string   "title"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20140428030005) do
     t.string   "remember_token"
     t.string   "password_reset_token"
     t.datetime "password_expires_after"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

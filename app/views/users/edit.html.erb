@@ -17,7 +17,7 @@
       <div id="user-profile-2" class="user-profile row-fluid">
         <div class="span3 center">
           <span class="profile-picture">
-            <%= image_tag 'avatars/profile-pic.jpg', id: 'avatar2', class: 'editable', alt: t(:avatar, scope: :users, name: current_user.name) %>
+            <%= image_tag current_user.avatar.url(:medium), id: 'avatar2', class: 'editable', alt: t(:avatar, scope: :users, name: current_user.name) %>
           </span>
           <div class="space space-4"></div>
           <a href="#" class="btn btn-small btn-block btn-success">
@@ -63,6 +63,7 @@
                   <i class="icon-phone"></i>
                 </span>
               <% end %>
+              <%= f.input :avatar, as: :file, input_html: { accept: "image/*" } %>
               
               <div class="form-actions" >
                 <%= button_tag class: 'btn btn-primary' do %>

@@ -34,6 +34,13 @@
         password: '密码'
         password_confirmation: '密码确认'
         role: '角色'
+        avatar: '头像'
         phone: '联系电话'
         last_ip: '最后登录IP'
         current_password: '当前密码'
+    errors:
+      models:
+        user:
+          attributes:
+            avatar_content_type:
+              invalid: '图片文件格式非法'

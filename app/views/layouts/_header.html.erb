@@ -58,7 +58,7 @@
 
         <li class="light-blue">
           <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-            <%= image_tag "avatars/user.jpg", class: 'nav-user-photo', alt: current_user.name %>
+            <%= image_tag current_user.avatar.url(:thumb), class: 'nav-user-photo', alt: current_user.name %>
             <span class="user-info">
               <small><%= t('home.welcome') %></small>
               <%= current_user.name %>

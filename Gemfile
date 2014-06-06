@@ -26,6 +26,9 @@ gem 'settingslogic', '2.0.9'
 gem 'bootstrap_helper', '4.2.3'
 gem 'nprogress-rails', '~> 0.1.3.0'
 
+# 头像上传
+gem 'paperclip', '~> 4.1'
+
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
