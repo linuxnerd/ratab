@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
   has_many :notifications, dependent: :destroy
   before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -13,14 +14,6 @@ class User < ActiveRecord::Base
   validates :phone, format: { with: /\A\+?[\d]*-?[\d]*\z/, message: ' 电话只能输入数字'}
 
   validates_length_of :password, :within => 6..16, message: '新密码长度不正确，应该在6到16位之间', on: :create
-
-  # paperclip
-  has_attached_file :avatar,
-                    styles: { :medium => "300x300>", :thumb => "100x100>" },
-                    default_url: "avatars/profile-pic.jpg"
-  validates_attachment :avatar,
-                      content_type: { content_type: /\Aimage\/.*\Z/ },
-                      size: { in: 0..4.megabytes }
 
   # rails自带
   has_secure_password

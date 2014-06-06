@@ -24,15 +24,15 @@
             <i class="icon-plus-sign bigger-110"></i>
             加为好友
           </a>
-  
+
           <a href="#" class="btn btn-small btn-block btn-primary">
             <i class="icon-envelope-alt"></i>
             发私信
           </a>
         </div>
-  
+
         <div class="span9">
-          <%= simple_form_for @user, :html => {class: 'form-horizontal'} do |f| %>
+          <%= simple_form_for @user, :html => {class: 'form-horizontal', multipart: true} do |f| %>
             <fieldset>
               <legend>
                 <h4 class="blue">
@@ -64,7 +64,7 @@
                 </span>
               <% end %>
               <%= f.input :avatar, as: :file, input_html: { accept: "image/*" } %>
-              
+
               <div class="form-actions" >
                 <%= button_tag class: 'btn btn-primary' do %>
                   <i class='icon-save'></i>
@@ -76,8 +76,7 @@
         </div><!--/span-->
       </div>
     </div>
-    
+
     <!--PAGE CONTENT ENDS-->
   </div><!--/.span-->
 </div><!--/.row-fluid-->
-
