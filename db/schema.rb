@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20140606135622) do
     t.string   "remember_token"
     t.string   "password_reset_token"
     t.datetime "password_expires_after"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "avatar"
   end
 
