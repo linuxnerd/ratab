@@ -15,4 +15,4 @@
 /log/*.log
 /tmp
 /config/config.yml
-/public/system
+/public/uploads
