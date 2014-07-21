@@ -20,7 +20,7 @@ bundle install
 cd config
 cp config.default.yml config.yml # 将参数修改成自己的参数(注意修改faye token)
 bundle exec rake db:schema:load
-bundle exec rake db:init # 创建一个管理员用户admin@g.com/qwe123
+bundle exec rake db:seed # 创建一个管理员用户admin@g.com/qwe123
 ```
 
 注意修改`config/environments`下各环境的邮箱配置，用来发送忘记密码邮件
